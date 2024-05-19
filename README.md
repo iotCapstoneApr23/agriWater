@@ -1,5 +1,5 @@
 # agriWater
-water-IOT-sensors-simulator
+Water Sprinkler system controler with IoT soil sensor (Devices are simulated, not actual reading)
 # Introduction
 Our team will develop an innovative solution for farm water management. Here is a demo of our project (to be published):
 Replit: 
