@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprinkler and Sensor Dashboard</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('/data');
+            const data = await response.json();
+
+            document.getElementById('sensor-data').innerText = JSON.stringify(data.sensor_data, null, 2);
+            document.getElementById('weather-data').innerText = JSON.stringify(data.weather_data, null, 2);
+            document.getElementById('sprinkler-data').innerText = JSON.stringify(data.sprinkler_data, null, 2);
+
+            // Display latitude and longitude data
+            let latLongHtml = '';
+            data.sensor_data.forEach(sensor => {
+                latLongHtml += `<li>Sensor ${sensor.sensor_id}: Lat: ${sensor.latitude}, Long: ${sensor.longitude}</li>`;
+            });
+            document.getElementById('lat-long-data').innerHTML = latLongHtml;
+
+            // Display relationships between sprinklers and sensors
+            const sprinklerSensorMap = {
+                'WS1': ['SS01', 'SS02', 'SS03', 'SS04'],
+                'WS2': ['SS05', 'SS06', 'SS07', 'SS08'],
+                'WS3': ['SS09', 'SS010', 'SS011', 'SS012'],
+                'WS4': ['SS013', 'SS014', 'SS015', 'SS016'],
+                'WS5': ['SS017', 'SS018', 'SS019', 'SS020']
+            };
+
+            let relationshipsHtml = '';
+            for (const [sprinkler, sensors] of Object.entries(sprinklerSensorMap)) {
+                relationshipsHtml += `<li>${sprinkler}: ${sensors.join(', ')}</li>`;
+            }
+            document.getElementById('relationships-data').innerHTML = relationshipsHtml;
+        }
+
+        window.onload = fetchData;
+    </script>
+</head>
+<body>
+    <h1>Sprinkler and Sensor Dashboard</h1>
+    <h2>Sensor Data</h2>
+    <pre id="sensor-data"></pre>
+    <h2>Weather Data</h2>
+    <pre id="weather-data"></pre>
+    <h2>Sprinkler Data</h2>
+    <pre id="sprinkler-data"></pre>
+    <h2>Latitude and Longitude Data</h2>
+    <ul id="lat-long-data"></ul>
+    <h2>Relationships between Sprinklers and Sensors</h2>
+    <ul id="relationships-data"></ul>
+</body>
+</html>
