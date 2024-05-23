@@ -1,0 +1,14 @@
+# Default ignored files
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Ignore Terraform lock file
+.terraform.lock.hcl
+
+# Ignore any directories or files starting with .terraform
+.terraform/
+
+# Ignore
+/shelf/
+/workspace.xml
