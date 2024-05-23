@@ -2,7 +2,9 @@
 # Ignore Terraform state files
 *.tfstate
 *.tfstate.backup
-
+*.tfvars
+agriwater_dynamo_db_tf.variables.hcl
+agriwater_dynamo_db_tf.terraformII.tfvars
 # Ignore Terraform lock file
 .terraform.lock.hcl
 
