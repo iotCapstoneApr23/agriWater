@@ -2,8 +2,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_dynamodb_table" "sensor_table" {
-  name           = "sensor_table"
+resource "aws_dynamodb_table" "Soil_Sensor" {
+  name           = "Soil_Sensor"
   hash_key       = "deviceID"
   range_key      = "Timestamp"
 
@@ -163,8 +163,8 @@ resource "aws_dynamodb_table" "weather_table" {
   }
 }
 
-resource "aws_dynamodb_table" "sprinkler" {
-  name           = "sprinkler"
+resource "aws_dynamodb_table" "Sprinkler" {
+  name           = "Sprinkler"
   hash_key       = "deviceID"
 
   attribute {
